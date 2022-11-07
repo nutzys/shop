@@ -11,4 +11,4 @@ define('DB_NAME', 'shop');
 //App information
 define('APPROOT', dirname(dirname(__FILE__)));
 define('URLROOT', 'http://localhost/shop');
-define('SITENAME', '');
+define('SITENAME', 'ShopSystem');
