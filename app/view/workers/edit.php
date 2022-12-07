@@ -10,23 +10,28 @@
 <body>
     <div class="container">
         <div class="create-card">
-            <form action="<?php echo URLROOT?>/product/create" method="post">
+            <form action="<?php echo URLROOT?>/workers/update/<?php echo $data['product']->id?>" method="post">
                 <label for="name">Name</label>
-                    <input type="text" name="name" class="input-field" placeholder="Name">
+                    <input type="text" name="name" class="input-field" value="<?php echo $data['product']->name?>" placeholder="Name">
                 <label for="quantity">Quantity</label>
-                    <input type="number" name="quantity" class="input-field" placeholder="quantity">
+                    <input type="number" name="quantity" class="input-field" value="<?php echo $data['product']->quantity?>" placeholder="Quantity">
                 <label for="manufacturer">Manufacturer</label>
-                    <input type="text" name="manufacturer" class="input-field" placeholder="Manufacturer">
+                    <input type="text" name="manufacturer" class="input-field" value="<?php echo $data['product']->manufacturer?>" placeholder="Manufacturer">
                 <label for="price">Price</label>
-                    <input type="number" name="price" class="input-field" placeholder="Price">
+                    <input type="number" name="price" class="input-field" value="<?php echo $data['product']->price?>" placeholder="Price">
                 <label for="arrival-date">Arival Date</label>
-                    <input type="date" name="arrival-date" class="input-field" placeholder="Arival Date">
+                    <input type="date" name="arrival-date" class="input-field" value="<?php echo $data['product']->arrival_date?>" placeholder="Arival Date">
                 <select name="location" class="input-select">
-                    <option value="">Location</option>
+                    <?php foreach($data['location'] as $location):?>
+                    <option value="<?php echo $location->id?>"><?php echo $location->location?></option>
+                    <?php endforeach;?>
                 </select>
                 <select name="category" class="input-select">
-                    <option value="">Category</option>
+                    <?php foreach($data['category'] as $category):?>
+                    <option value="<?php echo $category->id?>"><?php echo $category->category?></option>
+                    <?php endforeach;?>
                 </select>
+                <input type="hidden" name="id" value="<?= $data['product']->id?>">
                 <input type="submit" name="submit" class="btn">
             </form>
         </div>

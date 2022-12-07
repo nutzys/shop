@@ -15,11 +15,13 @@
     </div>
     <div class="container">
         <div class="login-card">
-            <form action="<?php echo URLROOT?>/users/login" class="login-form">
+            <form method="post" action="<?php echo URLROOT?>/users/login" class="login-form">
                 <label for="username">Username</label>
                 <input type="text" name="username" class="input-field" placeholder="Username">
+                <span><?php echo $data['username_error']?></span>
                 <label for="password">Password</label>
                 <input type="password" name="password" class="input-field" placeholder="Password">
+                <span><?php echo $data['password_error']?></span>
                 <input type="submit" name="submit" class="btn">
             </form>
         </div>

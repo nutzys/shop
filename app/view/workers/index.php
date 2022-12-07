@@ -12,40 +12,50 @@
         <div class="control-panel">
             <div class="user-card">
                 <h1>Welcome</h1>
-                <h3>Username</h3>
+                <h3><?php echo ucwords($data['username'])?></h3>
             </div>
             <div class="control-buttons">
-                <a href="" class="control-button">Edit Product</a>
-                <button class="control-button">Delete</button>
+
             </div>
             <div class="logout-container">
-                <button>Logout</button>
+                <form action="<?php echo URLROOT?>/users/logout" method="post">
+                    <button name="submit">Logout</button>
+                </form>
             </div>
         </div>
         <div class="table-container">
             <table>
                 <tr>
-                    <th>Select</th>
                     <th>ID</th>
                     <th>Name</th>
                     <th>Quantity</th>
                     <th>Manufacturer</th>
                     <th>Price</th>
-                    <th>Category</th>
                     <th>Arrival Date</th>
                     <th>Product Location</th>
+                    <th>Category</th>
+                    <th>Actions</th>
                 </tr>
+                <?php foreach($data['products'] as $product):?>
                 <tr>
-                    <td><input type="radio" name="radio"></td>
-                    <td>product</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
+                    <td><?php echo $product->id?></td>
+                    <td><?php echo $product->name?></td>
+                    <td><?php echo $product->quantity?></td>
+                    <td><?php echo $product->manufacturer?></td>
+                    <td><?php echo $product->price?></td>
+                    <td><?php echo $product->arrival_date?></td>
+                    <td><?php echo $product->location?></td>
+                    <td><?php echo $product->category?></td>
+                    <td>
+                        <form action="<?= URLROOT?>/workers/edit/<?= $product->id?>" method="post">
+                            <button>Edit</button>
+                        </form>
+                        <form action="<?= URLROOT?>/products/delete/<?=$product->id?>" method="post">
+                            <button>Delete</button>
+                        </form>
+                    </td>
                 </tr>
+                <?php endforeach;?>
             </table>
         </div>
     </div>

@@ -10,13 +10,16 @@
 <body>
     <div class="container">
         <div class="create-card">
-            <form action="<?php echo URLROOT?>/admins/edit" method="post">
+            <form action="<?php echo URLROOT?>/admins/store" method="post">
+            <input type="hidden" name="id" value="<?= $data['user']->id?>">
             <label for="username">Username</label>
-                <input type="text" name="username" class="input-field" placeholder="Username">
+                <input type="text" name="username" class="input-field" value="<?= $data['user']->username?>" placeholder="Username">
                 <label for="password">Password</label>
                 <input type="password" name="password" class="input-field" placeholder="Password">
                 <select name="role" class="input-select">
-                    <option value="">Role</option>
+                    <?php foreach($data['roles'] as $role):?>
+                    <option value="<?= $role->id?>"><?php echo $role->name?></option>
+                    <?php endforeach;?>
                 </select>
                 <input type="submit" name="submit" class="btn">
             </form>

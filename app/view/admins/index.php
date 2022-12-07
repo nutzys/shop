@@ -12,7 +12,7 @@
         <ul>
             <li>ShopSystem</li>
             <div class="moveable">
-                <li><a href="<?php echo URLROOT?>/admins/logout">Logout</a></li>
+                <li><a href="<?php echo URLROOT?>/users/logout">Logout</a></li>
                 <li>Admin</li>
             </div>
         </ul>
@@ -26,20 +26,22 @@
                 <th>Date Joined</th>
                 <th>Actions</th>
             </tr>
+            <?php foreach($data['users'] as $user):?>
             <tr>
-                <td>Ulvis</td>
-                <td>ulvis123</td>
-                <td>Admin</td>
-                <td>Date</td>
+                <td><?= $user->username?></td>
+                <td><?= $user->password?></td>
+                <td><?= $user->name?></td>
+                <td><?= $user->date_joined?></td>
                 <td>
-                    <form action="<?php echo URLROOT?>/admins/edit">
-                        <input type="submit" name="edit">
+                    <form action="<?php echo URLROOT?>/admins/edit/<?= $user->id?>">
+                        <input type="submit" name="edit" value="Edit">
                     </form>
-                    <form action="<?php echo URLROOT?>/admins/delete">
-                        <input type="submit" name="delete">
+                    <form action="<?php echo URLROOT?>/admins/delete/<?= $user->id?>">
+                        <input type="submit" name="delete" value="Delete">
                     </form>
                 </td>
             </tr>
+            <?php endforeach;?>
         </table>
     </div>
 </body>

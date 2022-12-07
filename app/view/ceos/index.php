@@ -12,10 +12,10 @@
         <div class="control-panel">
             <div class="user-card">
                 <h1>Welcome</h1>
-                <h3>Username</h3>
+                <h3><?php echo $data['username']?></h3>
             </div>
             <div class="control-buttons">
-                <a href="">Create Product</a>
+                <a href="<?= URLROOT?>/products/create">Create Product</a>
             </div>
             <div class="logout-container">
                 <button>Logout</button>
@@ -33,16 +33,18 @@
                     <th>Arrival Date</th>
                     <th>Product Location</th>
                 </tr>
+                <?php foreach($data['products'] as $product):?>
                 <tr>
-                    <td>product</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
-                    <td>ok</td>
+                    <td><?= $product->id?></td>
+                    <td><?= $product->name?></td>
+                    <td><?= $product->quantity?></td>
+                    <td><?= $product->manufacturer?></td>
+                    <td><?= $product->price?></td>
+                    <td><?= $product->category?></td>
+                    <td><?= $product->arrival_date?></td>
+                    <td><?= $product->location?></td>
                 </tr>
+                <?php endforeach;?>
             </table>
         </div>
     </div>

@@ -10,7 +10,7 @@
 <body>
     <div class="container">
         <div class="create-card">
-            <form action="<?php echo URLROOT?>/product/create" method="post">
+            <form action="<?php echo URLROOT?>/products/store" method="post">
                 <label for="name">Name</label>
                     <input type="text" name="name" class="input-field" placeholder="Name">
                 <label for="quantity">Quantity</label>
@@ -22,10 +22,14 @@
                 <label for="arrival-date">Arival Date</label>
                     <input type="date" name="arrival-date" class="input-field" placeholder="Arival Date">
                 <select name="location" class="input-select">
-                    <option value="">Location</option>
+                    <?php foreach($data['location'] as $location):?>
+                    <option value="<?= $location->id?>"><?= $location->location?></option>
+                    <?php endforeach;?>
                 </select>
                 <select name="category" class="input-select">
-                    <option value="">Category</option>
+                    <?php foreach($data['category'] as $category):?>
+                    <option value="<?= $category->id?>"><?= $category->category?></option>
+                    <?php endforeach;?>
                 </select>
                 <input type="submit" name="submit" class="btn">
             </form>
